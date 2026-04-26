@@ -1,5 +1,6 @@
 import Message from "../models/message.model.js";
 import User from "../models/user.model.js";
+import cloudinary from "../lib/cloudinary.js";
 
 export const getUsersForSidebar = async (req, res) => {
   try {
@@ -23,18 +24,18 @@ export const getMessages = async (req, res) => {
       $or: [
         {
           senderId: myId,
-          recieverId: userToChatId,
+          receiverId: userToChatId,
         },
         {
           senderId: userToChatId,
-          recieverId: myId,
+          receiverId: myId,
         },
       ],
     });
 
     res.status(200).json(messages);
   } catch (error) {
-    console.log(500).json({ error: "internal server error" });
+    res.status(500).json({ error: "internal server error" });
   }
 };
 

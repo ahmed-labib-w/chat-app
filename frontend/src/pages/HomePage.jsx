@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import { useChatStore } from "../store/useChatStore";
 
 const HomePage = () => {
-  const { selectedUser } = useChatStore;
+  const { selectedUser } = useChatStore();
 
   return (
     <div className="h-screen bg-bass-200">
